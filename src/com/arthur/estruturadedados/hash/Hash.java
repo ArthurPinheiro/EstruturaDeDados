@@ -13,17 +13,20 @@ public class Hash {
 		valor = new Object[tamMax];
 	}
 	
-	public void makeEmpty() {
+	//Função para limpar a tabela de hash
+	public void limparTabela() {
 		tamAtual = 0;
 		keys = new Object[tamMax];
 		valor = new Object[tamMax];
 	}
 	
+	//Tamanho da tabela
 	public int getSize() {
 		System.out.println(tamAtual);
 		return tamAtual;
 	}
 	
+	//Saber se está cheio
 	public int isFull() {
 		return tamAtual = tamMax;
 	}
@@ -32,15 +35,26 @@ public class Hash {
 		return getSize() == 0;
 	}
 	
+	//verifica se a tabela contem a chave
 	public boolean contains(Object key) {
 		System.out.println(get(key));
 		return get(key) != null;
 	}
 	
+	//Obter código de uma chaves
 	private int hash(Object key) {
 		System.out.println(key.hashCode() % tamMax);
 		return key.hashCode() % tamMax;
 	}
+	
+	public Object busca(int posicao) {
+		
+		if(!(posicao >= 0 && posicao < tamAtual)) {
+			throw new IllegalArgumentException("Posição invalida");
+		}
+		return this.keys[posicao];
+	}
+	
 	
 	  public void insert(Object key, Object val) {                
 	        int tmp = hash(key);

@@ -17,6 +17,8 @@ public class Main {
 	        h.insert(7, 10);
 	        h.remove(6);
 	        
+	        
+	        
 	        h.getSize();
 	}
 
