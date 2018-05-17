@@ -41,6 +41,19 @@ public class No {
 		}
 	}
 	
+	public No removeValorMinimoDaArvore(No node) {
+		if(node == null) {
+			System.out.println("Erro");
+		}else if(node.noEsquerda != null) {
+			node.noEsquerda = removeValorMinimoDaArvore(noEsquerda);
+			return node;
+		}else {
+			return node.noDireita;
+		}
+		
+		return null;
+	}
+	
 	public static void preOrdem(No node) {
 		if(node != null) {
 			System.out.println(node.valor + ", ");
@@ -63,5 +76,10 @@ public class No {
 			System.out.println(node.valor + ", ");
 			emOrdem(node.noDireita);
 		}
+	}
+	
+	public String toString() {
+		return null;
+		
 	}
 }

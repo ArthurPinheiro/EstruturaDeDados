@@ -10,6 +10,9 @@ public class Imprimir {
 		No.inserir(8);
 		No.inserir(9);
 		No.inserir(2);
+		
+		
+	
 	}
 
 }
