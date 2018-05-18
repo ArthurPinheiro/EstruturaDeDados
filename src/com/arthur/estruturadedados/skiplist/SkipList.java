@@ -14,9 +14,7 @@ public class SkipList<E extends Comparable<E>>  {
 	    public SkipList() {
 			size = 0;
 			maxLevel = 0;
-			// a SkipListNode with value null marks the beginning
 			head = new Node<E>(null);
-			// null marks the end
 			head.nextNodes.add(null); 
 		    }
 
@@ -24,16 +22,14 @@ public class SkipList<E extends Comparable<E>>  {
 	    	return head;
 	    }
 
-	    // Adds e to the skiplist.
-	    // Returns false if already in skiplist, true otherwise.
 	    public boolean add(E e) {
 			if(contains(e)) return false;
 			size++;
-			// random number from 0 to maxLevel+1 (inclusive)
+			// numero aleatorio 0 a 1 
 			int level = 0; 
 			while (Math.random() < PROBABILITY)
 				level++;
-			while(level > maxLevel) { // should only happen once
+			while(level > maxLevel) { 
 			    head.nextNodes.add(null);
 			    maxLevel++;
 			}
@@ -50,13 +46,12 @@ public class SkipList<E extends Comparable<E>>  {
 	      	return true;
 	    }
 
-	    // Returns the skiplist node with greatest value <= e
+	    // No com o maior valor
 	    private Node find(E e) {
 	    	return find(e,head,maxLevel);
 	    }
 
-	    // Returns the skiplist node with greatest value <= e
-	    // Starts at node start and level
+	   
 	    private Node find(E e, Node current, int level) {
 			
 	    	do {
@@ -66,7 +61,6 @@ public class SkipList<E extends Comparable<E>>  {
 	    	return current;
 	    }
 
-	    // Returns the node at a given level with highest value less than e
 	    private Node findNext(E e, Node current, int level) {
 		        Node next = (Node)current.nextNodes.get(level);
 			while(next != null) {
