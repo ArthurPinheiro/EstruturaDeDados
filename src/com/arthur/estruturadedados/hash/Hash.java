@@ -16,7 +16,7 @@ public class Hash {
 		valor = new Object[tamMax];
 	}
 	
-	//FunÁ„o para limpar a tabela de hash
+	//Fun√ß√£o para limpar a tabela de hash
 	public void limparTabela() {
 		tamAtual = 0;
 		keys = new Object[tamMax];
@@ -29,7 +29,7 @@ public class Hash {
 		return tamAtual;
 	}
 	
-	//Saber se est· cheio
+	//Saber se est√° cheio
 	public int isFull() {
 		return tamAtual = tamMax;
 	}
@@ -44,7 +44,7 @@ public class Hash {
 		return get(key) != null;
 	}
 	
-	//Obter cÛdigo de uma chaves
+	//Obter c√≥digo de uma chaves
 	private int hash(Object key) {
 		System.out.println(key.hashCode() % tamMax);
 		return key.hashCode() % tamMax;
@@ -54,13 +54,13 @@ public class Hash {
 	        Node next = (Node)current.nextNodes.get(level);
 		while(next != null) {
 		    Object value = (Object)next.getValue();
-		    if(lessThan(e,value)) // e < value
+		    if(lessThan(e,value)) 
 			break;
 		    current = next;
 		    next = (Node)current.nextNodes.get(level);
 		}
 		return current;
- }
+        }
 	
 	  public void insert(Object key, Object val) {                
 	        int tmp = hash(key);
@@ -70,7 +70,7 @@ public class Hash {
 	                keys[i] = key;
 	                valor[i] = val;
 	                tamAtual++;
-	                System.out.println("hash.Hash.insert() == " + key + " -> " + val);
+	                System.out.println( key + " = " + val);
 	                return;
 	            }
 	            if (keys[i].equals(key)){ 
@@ -89,7 +89,7 @@ public class Hash {
 	                return valor[i];
 	            i = (i + 1) % tamMax;
 	        }          
-	        System.out.println("hash.Hash.get() == " + valor[i]);
+	        System.out.println(valor[i]);
 	        return null;
 	    }
 
@@ -110,10 +110,10 @@ public class Hash {
 	            tamAtual--;  
 	            insert(tmp1, tmp2);            
 	        }
-	        System.out.println("hash.Hash.remove() == " + key);
+	        System.out.println(key);
 	        tamAtual--;        
 	    }
-	    
+	/*    
 	    private boolean lessThan(Object a, Object b) {
 	    	return a.compareTo(b) < 0;
 	    }
@@ -126,5 +126,5 @@ public class Hash {
 	    	return a.compareTo(b) > 0;
 	    }
 
-
+	*/
 }
