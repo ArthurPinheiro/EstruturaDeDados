@@ -1,5 +1,8 @@
 package com.arthur.estruturadedados.hash;
 
+import java.lang.Comparable;
+import com.arthur.estruturadedados.skiplist.Node;
+
 public class Hash {
 	
 	private int tamAtual, tamMax;
@@ -47,14 +50,17 @@ public class Hash {
 		return key.hashCode() % tamMax;
 	}
 	
-	public Object busca(int posicao) {
-		
-		if(!(posicao >= 0 && posicao < tamAtual)) {
-			throw new IllegalArgumentException("Posição invalida");
+	 private Node findNext(Object e, Node current, int level) {
+	        Node next = (Node)current.nextNodes.get(level);
+		while(next != null) {
+		    Object value = (Object)next.getValue();
+		    if(lessThan(e,value)) // e < value
+			break;
+		    current = next;
+		    next = (Node)current.nextNodes.get(level);
 		}
-		return this.keys[posicao];
-	}
-	
+		return current;
+ }
 	
 	  public void insert(Object key, Object val) {                
 	        int tmp = hash(key);
@@ -106,6 +112,18 @@ public class Hash {
 	        }
 	        System.out.println("hash.Hash.remove() == " + key);
 	        tamAtual--;        
+	    }
+	    
+	    private boolean lessThan(Object a, Object b) {
+	    	return a.compareTo(b) < 0;
+	    }
+
+	    private boolean equalTo(Object a, Object b) {
+	    	return a.compareTo(b) == 0;
+	    }
+
+	    private boolean greaterThan(Object a, Object b) {
+	    	return a.compareTo(b) > 0;
 	    }
 
 
