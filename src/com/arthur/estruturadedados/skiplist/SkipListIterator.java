@@ -23,5 +23,5 @@ public class SkipListIterator <E extends Comparable<E>> implements Iterator<E> {
 
     public void remove() throws UnsupportedOperationException {
 	throw new UnsupportedOperationException();
-}
+  }
 }
